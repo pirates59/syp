@@ -1,0 +1,175 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+</head>
+<style>
+    .container {
+        position: relative;
+        display: flex;
+        justify-content: flex-start; /* Align items to the left */
+        align-items: flex-start;
+        height: 95vh; /* Adjusted height */
+    }
+    
+    img {
+        max-width: 100%;
+        max-height: calc(100% - 30px); /* Adjusted height with 30px offset */
+    }
+    
+    .small-image {
+        position: absolute;
+        top: 27%;
+        left: 470px; /* Adjust the left position as needed */
+        transform: translate(-50%, -50%);
+        width: 180px; /* Five times bigger than the original size */
+        height: 180px; /* Five times bigger than the original size */
+        /* Additional styling for the small image */
+    }
+    
+    
+    .transparent-box {
+        position: absolute;
+        top: 55%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        background-color: #838ABD;
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px; /* Adjust padding as needed */
+        height: 62%;
+        width: 29%; /* Adjust width as needed */
+        max-width: 400px; /* Adjust max-width as needed */
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
+        
+    }
+    .container::after {
+        content: '';
+        position: absolute;
+        width: 4px; /* Width of the separation line */
+        height: 75%;
+        background-color: #ccc; /* Color of the separation line */
+        left: 50%; /* Adjust position based on the left position of the transparent box */
+        margin-top: 90px; /* Add margin to the top */
+    
+    }
+    .create-account-text {
+        font-family: 'Quicksand', sans-serif; /* Set font family to QuickSand */
+        font-size: 16px; /* Adjust font size as needed */
+        font-weight: bold; /* Optionally make it bold */
+    
+    }
+    .name, .password {
+        font-family: 'Quicksand', sans-serif; /* Set font family to QuickSand */
+        font-size: 16px; /* Adjust font size as needed */
+        font-weight: bold; /* Optionally make it bold */
+        margin-bottom: 10px; /* Add space below the name */
+        text-align: left; /* Align text to the left */
+        margin-top: 20px; /* Add margin to the top */
+    
+    }
+    .forget {
+        font-family: 'Quicksand', sans-serif; /* Set font family to QuickSand */
+        font-size: 16px; /* Adjust font size as needed */
+        font-weight: bold; /* Optionally make it bold */
+        text-align: left; /* Align text to the left */
+        margin-top: 20px; /* Add margin to the top */
+        
+    
+    }
+    .already {
+        font-family: 'Quicksand', sans-serif; /* Set font family to QuickSand */
+        font-size: 16px; /* Adjust font size as needed */
+        font-weight: bold; /* Optionally make it bold */
+        margin-top: 30px; /* Add margin to the top */
+        text-decoration: underline; /* Add underline to the text */
+    
+    }
+
+    .alert {
+        width: 1500px; /* Adjust width as needed */
+        height: 20px; /* Adjust height as needed */
+        background-color: #d4edda; /* Light green color */
+        padding: 10px; /* Adjust padding as needed */
+        margin-bottom: 20px; /* Adjust margin as needed */
+    }
+    
+    .overlay-login {
+        position: absolute;
+        bottom: 20px; /* Adjust vertical position of buttons */
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        
+    }
+    .overlay-login button {
+        display: block; /* Display as block element */
+        width: 240px; /* Set a fixed width for the buttons */
+        padding: 10px 20px;
+        font-family: 'Quicksand', sans-serif; /* Set font family to QuickSand */
+        font-size: 16px;
+        font-weight: bold; /* Optionally make it bold */
+        border: none;
+        background-color: rgba(0, 0, 255, 0.2); /* Use RGBA color with 20% opacity */
+        filter: brightness(80%);
+        cursor: pointer;
+        border-radius: 10px; /* Rounded corners */
+        margin-bottom: -14px;
+    }
+    
+    .overlay-login button:hover {
+        background-color: rgba(0, 0, 255, 0.4); /* Use RGBA color with 20% opacity */
+        filter: brightness(80%);
+    }
+
+    input{
+        display: block; /* Display as block element */
+        width: 260px; /* Set a fixed width for the buttons */
+        padding: 10px 25px;
+        font-family: 'Quicksand', sans-serif; /* Set font family to QuickSand */
+        font-size: 16px;
+        font-weight: bold; /* Optionally make it bold */
+        border: none;
+        background-color: #fff; /* Use RGBA color with 20% opacity */
+        filter: brightness(90%);
+        cursor: pointer;
+        border-radius: 10px; /* Rounded corners */
+        margin-bottom:35px;
+    }
+</style>
+<body>
+    <div class="container">
+        <img src="{% static 'photo/man.jpeg'%}" alt="Example Image">
+    </div>
+    <div class="small-image">
+        <img src="{% static 'photo/logo.png'%}" alt="Example Image">
+    </div>
+    <div class="transparent-box">
+        <form method="post"> 
+            {% csrf_token %} 
+            <div class="create-account-text">Login</div>
+            <div class="name"> <!-- Keep the class attribute for styling purposes -->
+                <label for="username">Username</label>
+                <input type="text" placeholder="Email or Phone" name="username" id="username" required>
+            </div>
+            <div class="password"> <!-- Keep the class attribute for styling purposes -->
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" id="password" name="pass" required>
+            </div>
+            
+            <div class="forget">Forgotten password?</div>
+            <div class="already">
+                <a href="{% url 'create-creat' %}">Don't have an account?</a> <!-- Updated URL tag -->
+            </div>
+            <div class="overlay-login">
+                <button type="submit">LOGIN</button>
+            </div>
+            {% if error_message %}
+            <p style="color: red ;">{{ error_message }}</p>
+        {% endif %}
+        </form>
+    </div>
+   
+</body>
+</html>

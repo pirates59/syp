@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+</head>
+<style>
+    .container {
+        position: relative;
+        display: flex;
+        justify-content: flex-start; /* Align items to the left */
+        align-items: flex-start;
+        height: 95vh; /* Adjusted height */
+    }
+    
+    img {
+        max-width: 100%;
+        max-height: calc(100% - 30px); /* Adjusted height with 30px offset */
+    }
+    
+    .small-image {
+        position: absolute;
+        top: 27%;
+        left: 470px; /* Adjust the left position */
+        transform: translate(-50%, -50%);
+        width: 180px; 
+        height: 180px; 
+       
+    }
+    
+    .transparent-box {
+        position: absolute;
+        top: 55%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+        background-color: #ffba00; /* Jasper Orange color with 30% transparency */
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px;
+        height: 68%;
+        width: 25%; 
+        max-width: 400px; 
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .container::after {
+        content: '';
+        position: absolute;
+        width: 4px; 
+        height: 64%;
+        background-color: #ccc; 
+        left: 50%; 
+        margin-top: 120px; /* Add margin to the top */
+    
+    }
+    .overlay h2 {
+        font-size: 70px; /* Adjust the font size as needed */
+        font-weight: bold; /* Make the text bold */
+        margin-bottom: 34px;
+        
+    }
+    .overlay h3 {
+        font-size: 30px; /* Adjust the font size as needed */
+        font-weight: bold; /* Make the text bold */
+        margin-bottom: 35px;
+      
+
+       
+    }
+    .overlay {
+        position: absolute;
+        bottom: 5px; 
+        left: 70%;
+        transform: translateX(-50%);
+        margin-bottom: 140px;
+    }
+    
+    .overlay button {
+        display: block;
+        width: 280px; 
+        padding: 10px;
+        font-family: 'Quicksand', sans-serif; 
+        font-size: 16px;
+        font-weight: bold; 
+        border: none;
+        background-color: rgba(0, 0, 255, 0.2); 
+        filter: brightness(80%);
+        cursor: pointer;
+        border-radius: 13px; 
+        
+        
+    }
+    .overlay a {
+        text-decoration: none; 
+    }
+    
+    .overlay button:hover {
+        background-color: rgba(0, 0, 255, 0.4); 
+        filter: brightness(80%);
+    }
+     
+</style>
+<body>
+    <div class="container">
+        <img src="{% static 'photo/man.jpeg'%}" alt="Example Image">
+        <div class="overlay">
+                <h2>Let's talk</h2>
+                <h3>Join today.</h3>
+            <a href="{% url "create-creat" %}"><button class="overlay-button">Create account</button></a> <!-- Link to create.html -->
+            <br> 
+            <a href="{% url "create-login" %}"><button class="overlay-button">Login</button></a> <!-- Link to login.html -->
+        </div>
+    </div>
+    <div class="small-image">
+        <img src="{% static 'photo/logo.png'%}" alt="logo Image">
+    </div>
+</body>
+</html>

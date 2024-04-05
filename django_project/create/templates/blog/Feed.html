@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Layout</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2; /* Set default background color */
+        color: #333; /* Set default text color */
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+    }
+
+    /* Styles for .blue-section and its children */
+    .blue-section {
+        flex: 0 0 15%; /* 15% width */
+        background-color: #023E8A;
+        position: relative; /* Necessary for positioning child elements */
+    }
+
+    .small-box {
+        width: 192px;
+        height: 150px;
+        background-color: #0077B6;
+        position: relative;
+        display: flex;
+        flex-direction: column; /* Change to column layout */
+        justify-content: center; /* Align content to the bottom */
+        align-items: center;
+        font-size: 24px;
+    }
+
+    .icon-left {
+        position: relative;
+        left: -12px; /* Adjust as needed */
+        top: 21px; /* Adjust as needed */
+    }
+    
+    .icon-container {
+        position: relative;
+        text-align: center;
+    }
+    
+    .profile-text {
+        position: absolute;
+        top: 160%;
+        left: 41%;
+        transform: translate(-50%, -50%);
+        font-size: 14px; /* Adjust as needed */
+        color: white; /* Adjust color as needed */
+    }
+    .profile-text:hover, .profile:hover, .dark:hover, .feed:hover, .help:hover, .off:hover{
+        background-color: rgba(0, 0, 255, 0.4); /* Use RGBA color with 40% opacity */
+        filter: brightness(80%);
+        cursor: pointer; /* Add pointer cursor */
+    }
+    
+    
+    .profile {
+        position: absolute;
+        top: 350%;
+        left:47%;
+        transform: translate(-50%, -50%);
+        font-size: 14px; /* Adjust as needed */
+        color: white; /* Adjust color as needed */
+    }
+    
+    .icon {
+        position: relative;
+        left: -33px; /* Adjust as needed */
+        top: 57px; /* Adjust as needed */
+    }
+    .mode {
+        position: relative;
+        left: -54px; /* Adjust as needed */
+        top: 97px; /* Adjust as needed */
+    }
+
+    .dark {
+        position: absolute;
+        top: 560%;
+        left: 48%;
+        transform: translate(-50%, -50%);
+        font-size: 14px; /* Adjust as needed */
+        color: white; /* Adjust color as needed */
+    }
+
+    .off {
+        position: relative;
+        left: 55px; /* Adjust as needed */
+        top: 98px; /* Adjust as needed */
+    }
+
+    .dark-mode {
+        background-color: #333; /* Dark background color */
+        color: #fff; /* Light text color */
+    }
+
+    .home {
+        position: relative;
+        left: -98px; /* Adjust as needed */
+        top: 138px; /* Adjust as needed */
+    }
+
+    .feed {
+        position: absolute;
+        top: 770%;
+        left: 39%;
+        transform: translate(-50%, -50%);
+        font-size: 14px; /* Adjust as needed */
+        color: white; /* Adjust color as needed */
+    }
+
+    .call {
+        position: relative;
+        left: -118px; /* Adjust as needed */
+        top: 176px; /* Adjust as needed */
+    }
+
+    .help {
+        position: absolute;
+        top: 972%;
+        left: 43%;
+        transform: translate(-50%, -50%);
+        font-size: 14px; /* Adjust as needed */
+        color: white; /* Adjust color as needed */
+    }
+
+    .btn {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        padding: 5px 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        width: 170px;
+        height: 30px; /* Adjust height as needed */
+        margin: 200px auto 0; /* Adjust top margin as needed */
+    }
+
+    .username .fas.fa-pen {
+        font-size: 15px; /* Adjust the size as needed */
+        position: absolute; /* Position the icon relative to the username */
+        top: 24%; /* Adjust the vertical position */
+        transform: translateY(-50%); /* Center the icon vertically */
+        margin-left: 10px; /* Add some space between the username and the icon */
+    }
+
+    .account-img {
+        width: 92px; /* Set image width */
+        height: 92px; /* Set image height */
+        object-fit: cover; /* Maintain aspect ratio and cover container */
+        border-radius: 50%; /* Make the image circular */
+        position: absolute; /* Position absolutely */
+        left: 38px; /* Position to the left */
+        margin-top: 10px;
+
+    }
+
+    .media-body {
+        left: 45px; /* Position to the left */
+        position: absolute; /* Position absolutely */
+        margin-top: 100px;
+        font-size: 10px;
+        color: white; /* Adjust color as needed */
+        filter: brightness(80%);
+
+    }
+
+
+.small-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #F5CAC3;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    font-size: 14px;
+    width: 100px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.small-container:hover {
+        background-color: rgba(0, 0, 255, 0.4); /* Use RGBA color with 20% opacity */
+        filter: brightness(80%);
+}
+
+
+.posts-container {
+    margin-top: 90px;
+    width: 800px;
+    margin-left: -80px;
+
+    
+}
+
+.post {
+    display: flex;
+    align-items: flex-start;
+    background-color:  #708DC7;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.account-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.post-content {
+    flex-grow: 1;
+}
+
+.post h1 {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 5px;
+}
+
+.post p {
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.post .date {
+    font-size: 14px;
+    color: white;
+    filter:brightness(90%);
+}
+
+
+
+        </style>
+<body>
+   
+
+    
+    <div class="container">
+        <div class="blue-section">
+            <div class="small-box"></div>
+            <div class="icon-container">
+                <i class="fas fa-user icon-left"></i> <!-- User symbol with icon-right class -->
+                <a href="{% url "create-profile" %}"><div class="profile-text">Profile</div></a>
+                <i class="fas fa-plus-circle icon"></i>
+                <a href="{% url "create-post" %}"><div class="profile">Write Post</div></a>
+                <i class="fas fa-cog mode"></i>
+                <div class="dark" id="button" >Dark Mode</div>
+                <i class="fa fa-toggle-on off"  id="button" onclick="toggleDarkMode()"></i>
+                <i class="fas fa-home home"></i>
+                <a href="{% url "create-feed" %}"><div class="feed">Feed</div></a>
+                <i class="fas fa-phone call"></i>
+                <a href="{% url "create-helpline" %}"> <div class="help">Helpline</div></a>
+    
+            </div>
+            <a href="{% url 'create-logout' %}" class="btn btn-primary">Logout</a>
+        </div>
+    
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+            <div class="media-body">
+                <h2 class="username">{{ user.username }}</h2>
+            </div>
+        </div>
+            <div class="empty-box"></div>
+                <div class="small-container">General</div>
+                     
+                <div class="posts-container">
+                    {% for post in posts %}
+                        <div class="post">
+                            <img class="rounded-circle account-image" src="{{ post.author.profile.image.url }}">
+                            <div class="post-content">
+                                <h1><a href="{% url 'create-post-detail' post.id %}">{{ post.author }}</a></h1>
+                                <p>{{ post.content }}</p>
+                                <p class="date">{{ post.date_posted|date:"d-M-y" }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+        <script>
+            function toggleDarkMode() {
+                document.body.classList.toggle('dark-mode');
+            }
+        </script>
+    
+</body>
+</html>
